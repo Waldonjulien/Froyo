@@ -4,13 +4,11 @@ const userInput = prompt(
 const order = "vanilla,vanilla,vanilla,strawberry,coffee,coffee";
 const orderedFlavors = order.split(",");
 
-console.log(orderedFlavors);
+// console.log(orderedFlavors);
 
-const orderCount = orderedFlavors.reduce(
-  ((orderedFlavors) => {
-    orderedFlavors = (orderedFlavors || 0) + 1;
+const orderCount = orderedFlavors.reduce((accumulator, orderedFlavors) => {
+  accumulator[orderedFlavors] = (accumulator[orderedFlavors] || 0) + 1;
+  return accumulator;
+}, {});
 
-    return orderCount;
-  },
-  {})
-);
+console.log(orderCount);
